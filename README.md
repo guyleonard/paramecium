@@ -1,2 +1,3 @@
-# paramecium
-Scripts and data file for An RNAi-dependent punishment for algal elimination in a phototrophic endosymbiosis.
+# *Paramecium bursaria*
+
+Scripts and data file for the paper 'An RNAi-dependent punishment for algal elimination in a phototrophic endosymbiosis'.
