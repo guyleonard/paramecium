@@ -1,3 +1,3 @@
 # *Paramecium bursaria*
 
-Scripts and data file for the paper 'An RNAi-dependent punishment for algal elimination in a phototrophic endosymbiosis'.
+Scripts and data file for the paper "Emergent RNA-RNA interactions promote cooperation in a nascent phototrophic endosymbiosis" - Jenkins et al (in prep).
