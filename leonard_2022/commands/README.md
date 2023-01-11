@@ -17,21 +17,21 @@ flye assembly on separate bins
 busco auto-lineage on all bins
 
 #### Alveolata
-bin-0
-bin-1
-bin-2
+ bin-0
+ bin-1
+ bin-2
 
 #### Bacterial
-bin-3
-bin-5
-bin-7
+ bin-3
+ bin-5
+ bin-7
 
 #### Unclassified
-bin-4
-bin-6
-bin-8 to bin-22
+ bin-4
+ bin-6
+ bin-8 to bin-22
 
-## Assembly of Combined 'Alveolate' Identifed Bins
+## Assembly of Combined 'Alveolata' Identifed Bins
 ```bash
 flye --threads 56 --meta --pacbio-raw bin-012reads.fastq.gz -o bin-012reads_assembly_raw
 ```
