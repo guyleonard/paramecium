@@ -94,5 +94,5 @@ mitofinder -a assembly.fasta -p 56 -r p_caudatum_mitochondria.gb --new-genes --a
 
 
 mitochondrial=(scaffold_350 scaffold_862 scaffold_698)
-for i in "${mitochondrial[@]}"; do   echo "${i}";   sed -i "s/^>${i}$/>${i}_putative_mito/" paramecium_bursaria_198b_v2.fasta; done
+for i in "${mitochondrial[@]}"; do   echo "${i}";   sed -i "s/^>${i}$/>${i}_putative_mito/" assembly.fasta; done
 ```
