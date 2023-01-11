@@ -89,9 +89,10 @@ for i in "${telomeres_end[@]}"; do   echo "${i}";   sed -i "s/^>${i}$/>${i}_part
 ```
 
 ## Mitochondria
+```bash
 mitofinder -a assembly.fasta -p 56 -r p_caudatum_mitochondria.gb --new-genes --allow-intron --numt --intron-size 35 --max-contig-size 60000 -o 6 -j pb_mito
 
-```bash
+
 mitochondrial=(scaffold_350 scaffold_862 scaffold_698)
 for i in "${mitochondrial[@]}"; do   echo "${i}";   sed -i "s/^>${i}$/>${i}_putative_mito/" paramecium_bursaria_198b_v2.fasta; done
 ```
