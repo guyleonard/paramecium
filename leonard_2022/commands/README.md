@@ -136,3 +136,26 @@ TransDecoder.Predict -t ../3_final_set/pb_isoseq_collapsed_isoforms_all.rep.fa -
 # headers are a mess
 seqkit replace -p '(.+)' -r '{nr}' pb_isoseq_collapsed_isoforms_all.rep.fa.transdecoder.pep >pb_isoseq_collapsed_isoforms_all.rep.fa.transdecoder.renamed.pep
 ```
+
+## BUSCO
+
+### peptides
+```bash
+busco -m prot -i ./pb_isoseq_collapsed_isoforms_all.rep.fa.transdecoder.renamed.pep --metaeuk_parameters="--translation-table=6" --metaeuk_rerun_parameters="--translation-table=6" -c 56 -o busco_prot_auto_isoseq --auto-lineage
+# eukaryota_odb10: C:55.3%[S:32.9%,D:22.4%],F:3.1%,M:41.6%,n:255
+# alveolata_odb10: C:86.0%[S:42.1%,D:43.9%],F:0.6%,M:13.4%,n:171
+# archaea_odb10:   C:25.8%[S:10.5%,D:15.3%],F:8.9%,M:65.3%,n:124
+# bacteria_odb10:  C:46.9%[S:24.7%,D:22.2%],F:5.2%,M:47.9%,n:1
+```
+### transcriptome
+```bash
+# headers are a mess
+seqkit replace -p '(.+)' -r '{nr}' pb_isoseq_collapsed_isoforms_all.rep.fa >pb_isoseq_collapsed_isoforms_all.rep.renamed.fa
+
+# busco
+busco -m tran -i ./pb_isoseq_collapsed_isoforms_all.rep.renamed.fa --metaeuk_parameters="--translation-table=6" --metaeuk_rerun_parameters="--translation-table=6" -c 56 -o busco_tran_auto_isoseq --auto-lineage
+# eukaryota_odb10: C:55.7%[S:28.6%,D:27.1%],F:3.5%,M:40.8%,n:255
+# alveolata_odb10: C:87.1%[S:36.8%,D:50.3%],F:0.6%,M:12.3%,n:171
+# archaea_odb10:   C:09.8%[S:04.1%,D:05.7%],F:0.0%,M:90.2%,n:194
+# bacteria_odb10:  C:04.0%[S:00.8%,D:03.2%],F:1.6%,M:94.4%,n:12
+```
