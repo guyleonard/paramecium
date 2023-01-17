@@ -121,6 +121,7 @@ isoseq3 collapse -j 112 --do-not-collapse-extra-5exons clustered_mapped_186b_v5.
 
 ## Transdecoder
 ```bash
+# extract the long open reading frames
 TransDecoder.LongOrfs -t ../3_final_set/pb_isoseq_collapsed_isoforms_all.rep.fa -G Ciliate
 
 # run blast
