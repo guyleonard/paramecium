@@ -1,5 +1,6 @@
 # Analyses
 
+# Genome
 ## Preliminary
 BAM --> FASTQ
 cat *.fastq > all_pacbio_libraries.fq
@@ -95,4 +96,42 @@ mitofinder -a assembly.fasta -p 56 -r p_caudatum_mitochondria.gb --new-genes --a
 
 mitochondrial=(scaffold_350 scaffold_862 scaffold_698)
 for i in "${mitochondrial[@]}"; do   echo "${i}";   sed -i "s/^>${i}$/>${i}_putative_mito/" assembly.fasta; done
+```
+
+# Iso-Seq
+
+## isoseq3
+```bash
+# identify and remove the 5'/3' cDNA primers
+lima --isoseq --peek-guess --dump-clips -j 112 ../m64176e_220706_095424.hifi_reads.bam ../primers.fasta hifi_reads.bam
+
+# remove polyA tails and artificial concatemers
+isoseq3 refine --require-polya -j 112 hifi_reads.consensusreadset.xml ../primers.fasta flnc.bam
+
+# cluster Full Length Non Chimeric/Concatemer reads
+isoseq3 cluster -j 112 flnc.bam clustered.bam --verbose --use-qvs
+# outputs: clustered.hq.fasta.gz = ALL transcripts, but we don't want to use this file yet...
+
+# Map polished transcripts to v5 genome assembly
+pbmm2 align -j 112 --preset ISOSEQ --sort clustered.bam pb186b_assembly_v5.fasta clustered_mapped_186b_v5.bam
+
+# collapse isoforms
+isoseq3 collapse -j 112 --do-not-collapse-extra-5exons clustered_mapped_186b_v5.bam collapsed.gff
+```
+
+## Transdecoder
+```bash
+TransDecoder.LongOrfs -t ../3_final_set/pb_isoseq_collapsed_isoforms_all.rep.fa -G Ciliate
+
+# run blast
+blastp -query pb_isoseq_collapsed_isoforms_all.rep.fa.transdecoder_dir/longest_orfs.pep -db /databases/uniprot/uniprot_sprot.fasta -max_target_seqs 1 -outfmt 6 -evalue 1e-5 -num_threads 10 >longest_peps_vs_uniprot_sprot.tab
+
+# run pfam
+hmmscan --cpu 56 --domtblout pfam.domtblout /databases/pfam/35/Pfam-A.hmm ../pb_isoseq_collapsed_isoforms_all.rep.fa.transdecoder_pb_isoseq_collapsed_isoforms_all.rep.fa.transdecoder_dir/longest_orfs.pep
+
+# predict coding regions
+TransDecoder.Predict -t ../3_final_set/pb_isoseq_collapsed_isoforms_all.rep.fa -G Ciliate --single_best_only --retain_blastp_hits blast/longest_peps_vs_uniprot_sprot.tab --retain_pfam_hits pfam/pfam.domtblout
+
+# headers are a mess
+seqkit replace -p '(.+)' -r '{nr}' pb_isoseq_collapsed_isoforms_all.rep.fa.transdecoder.pep >pb_isoseq_collapsed_isoforms_all.rep.fa.transdecoder.renamed.pep
 ```
