@@ -1,43 +1,44 @@
 # Analyses
 
 # Genome
-## Preliminary
+## PacBio
+### Preliminary
 BAM --> FASTQ
 cat *.fastq > all_pacbio_libraries.fq
 
-## LRBinner
+### LRBinner
 ```bash
 LRBinner -r all_pacbio_libraries.fq -o lrb_output_all_PB_libs --ae-epochs 200 --resume -mbs 1000 -bit 0 -bs 10 -bc 10 --threads 56
 
 separate_reads.py --reads all_pacbio_libraries.fq --bins lrb_output_all_PB_libs/binning_result.pkl --outpath seperated_reads
 ```
-### Assembly of Bins
+#### Assembly of Bins
 flye assembly on separate bins
 
-### BUSCO Lineage Assignment
+#### BUSCO Lineage Assignment
 busco auto-lineage on all bins
 
-#### Alveolata
+##### Alveolata
 * bin-0
 * bin-1
 * bin-2
 
-#### Bacterial
+##### Bacterial
 * bin-3
 * bin-5
 * bin-7
 
-#### Unclassified
+##### Unclassified
 * bin-4
 * bin-6
 * bin-8 to bin-22
 
-## Assembly of Combined 'Alveolata' Identifed Bins
+### Assembly of Combined 'Alveolata' Identifed Bins
 ```bash
 flye --threads 56 --meta --pacbio-raw bin-012reads.fastq.gz -o bin-012reads_assembly_raw
 ```
 
-### Rough Clean & Mask
+#### Rough Clean & Mask
 ```bash
 funannotate clean -i assembly.fasta -o assembly_cleaned.fasta --exhaustive --cpus 56
 funannotate sort -i assembly_cleaned.fasta -o assembly_cleaned_sorted.fasta
@@ -51,10 +52,10 @@ ln -s repeatmasker/assembly_cleaned_sorted.fasta.masked assembly_cleaned_sorted_
 ln -s assembly_cleaned_sorted_masked.fasta assembly.fasta
 ```
 
-## Pilon
+### Pilon
 Two rounds of Pilon with Illumina Nova-Seq Libraries
 
-## Telomeres
+### Telomeres
 ```bash
 telomeric_repeats.fasta
 >5_prime
@@ -89,13 +90,20 @@ telomeres_end=(scaffold_1046 scaffold_112 scaffold_113 scaffold_118 scaffold_126
 for i in "${telomeres_end[@]}"; do   echo "${i}";   sed -i "s/^>${i}$/>${i}_partial_chr_end/" assembly.fasta; done
 ```
 
-## Mitochondria
+### Mitochondria
 ```bash
 mitofinder -a assembly.fasta -p 56 -r p_caudatum_mitochondria.gb --new-genes --allow-intron --numt --intron-size 35 --max-contig-size 60000 -o 6 -j pb_mito
 
 
 mitochondrial=(scaffold_350 scaffold_862 scaffold_698)
 for i in "${mitochondrial[@]}"; do   echo "${i}";   sed -i "s/^>${i}$/>${i}_putative_mito/" assembly.fasta; done
+```
+
+## Illumina Novaseq
+
+### Adapter Trimming and QC
+```bash
+fastp -i 10024_Paramecium_r1.fq.gz -I 10024_Paramecium_r2.fq.gz -o 10024_Paramecium_r1_trimmed.fq.gz -O 10024_Paramecium_r2_trimmed.fq.gz --unpaired1 10024_Paramecium_unpaired_trimmed.fq.gz --unpaired2 10024_Paramecium_unpaired_trimmed.fq.gz --detect_adapter_for_pe --trim_poly_g -c -x -w 16
 ```
 
 # Iso-Seq
