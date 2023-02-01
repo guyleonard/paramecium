@@ -55,6 +55,11 @@ ln -s assembly_cleaned_sorted_masked.fasta assembly.fasta
 ### Pilon
 Two rounds of Pilon with Illumina Nova-Seq Libraries
 
+### Funannotate
+```bash
+funannotate train -i genome_no_bac.fasta -o training --left 1A_S28_R1_001.fastq.gz  1B_S29_R1_001.fastq.gz  1C_S30_R1_001.fastq.gz  1E_S31_R1_001.fastq.gz  3A_S32_R1_001.fastq.gz  3C_S33_R1_001.fastq.gz  3D_S34_R1_001.fastq.gz  3E_S35_R1_001.fastq.gz  5B_S36_R1_001.fastq.gz  5C_S37_R1_001.fastq.gz  5D_S38_R1_001.fastq.gz    --right 1A_S28_R2_001.fastq.gz  1B_S29_R2_001.fastq.gz  1C_S30_R2_001.fastq.gz  1E_S31_R2_001.fastq.gz  3A_S32_R2_001.fastq.gz  3C_S33_R2_001.fastq.gz  3D_S34_R2_001.fastq.gz  3E_S35_R2_001.fastq.gz  5B_S36_R2_001.fastq.gz  5C_S37_R2_001.fastq.gz  5D_S38_R2_001.fastq.gz --stranded RF --pacbio_isoseq clustered.hq.fasta.gz --jaccard_clip --memory 1000G -c 25 --species "Paramecium bursaria" --strain "186b" --cpus 56
+```
+
 ### Telomeres
 ```bash
 telomeric_repeats.fasta
