@@ -152,6 +152,11 @@ TransDecoder.Predict -t ../3_final_set/pb_isoseq_collapsed_isoforms_all.rep.fa -
 seqkit replace -p '(.+)' -r '{nr}' pb_isoseq_collapsed_isoforms_all.rep.fa.transdecoder.pep >pb_isoseq_collapsed_isoforms_all.rep.fa.transdecoder.renamed.pep
 ```
 
+```bash
+pblat P.bur_186b.fas pb_isoseq_collapsed_isoforms_all.rep.fa.transdecoder.cds -out=blast8 cds_vs_iso.out -threads=112
+awk '$3>90{print $0}' cds_vs_iso.out | cut -f1 | sort | uniq | wc -l
+```
+
 ## BUSCO
 
 ### peptides
