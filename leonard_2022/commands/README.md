@@ -58,7 +58,7 @@ Two rounds of Pilon with Illumina Nova-Seq Libraries
 ### Funannotate
 Had to modify the funnanotate scripts (train/library) to force PASA + Trinity/Trinotate scripts to enable -G Ciliate mode. Also edited the funannoate library to enable --gcode 6 for GeneMark-ES v4.71. Very hacky, would be nice to fix, add CLI option and add a pull request. Update - it's too messy I think. I had to edit a bunch of other scripts EVM and P2G and the main "translate" code (not using biopython) too! Too many options with different names: gcode 6, --stops ATG, -G Ciliate. Eugh. 
 
-Also had to add this to the headers prior to any gene training/preds so that tbl2asn knows to translate stop codons properly at the end of 'predict'. Annoying this can't be passed as an option - wtf NCBI.
+Also had to add this to the headers so that tbl2asn knows to translate stop codons properly at the end of 'predict'. Annoying this can't be passed as an option - wtf NCBI. This also messes up GeneMark. Sigh. 
 
 ```bash
 sed -i 's/>.*/& [gcode=6]/' genome_no_bac.fasta
