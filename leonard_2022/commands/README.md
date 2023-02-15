@@ -56,9 +56,9 @@ ln -s assembly_cleaned_sorted_masked.fasta assembly.fasta
 Two rounds of Pilon with Illumina Nova-Seq Libraries
 
 ### Funannotate
-Had to modify the funnanotate scripts (train/library) to force PASA + Trinity/Trinotate scripts to enable -G Ciliate mode. Also edited the funannoate library to enable --gcode 6 for GeneMark-ES v4.71. Very hacky, would be nice to fix, add CLI option and add a pull request. Update - it's too messy I think. I had to edit a bunch of other scripts EVM and P2G and the main "translate" code (not using biopython) too! Too many options with different names: gcode 6, --stops ATG, -G Ciliate. Eugh. 
+Had to modify the funnanotate scripts (train/library) to force PASA + Trinity/Trinotate scripts to enable -G Ciliate mode. Also edited the funannoate library to enable --gcode 6 for GeneMark-ES v4.71. Very hacky, would be nice to fix, add CLI option and add a pull request. Update - it's too messy I think. I had to edit a bunch of other scripts EVM and P2G and the main "translate" code (not using biopython) too! Too many options with different names: gcode 6, --stops ATG, -G Ciliate. Eugh. Also edited heavily the way augustus runs; added exact opal/ochre/amber stop codon usage and translation table 6 to params file. Weirdly, this increased gene preds from ~2k to ~12k... Might have broken optimise in the process, but final result is roughly expected.
 
-Also had to add this to the headers so that tbl2asn knows to translate stop codons properly at the end of 'predict'. Annoying this can't be passed as an option - wtf NCBI. This also messes up GeneMark. Sigh. 
+Also had to add this to the headers so that tbl2asn knows to translate stop codons properly at the end of 'predict'. Annoying this can't be passed as an option - wtf NCBI. This also messes up GeneMark. Sigh. More hacks, just modified the final genome fasta before tbl2asn is run. Now works fine.
 
 ```bash
 sed -i 's/>.*/& [gcode=6]/' genome_no_bac.fasta
