@@ -65,11 +65,15 @@ sed -i 's/>.*/& [gcode=6]/' genome_no_bac.fasta
 ```
 
 ```bash
-funannotate train -i genome_no_bac.fasta -o predictions --left 1A_S28_R1_001.fastq.gz  1B_S29_R1_001.fastq.gz  1C_S30_R1_001.fastq.gz  1E_S31_R1_001.fastq.gz  3A_S32_R1_001.fastq.gz  3C_S33_R1_001.fastq.gz  3D_S34_R1_001.fastq.gz  3E_S35_R1_001.fastq.gz  5B_S36_R1_001.fastq.gz  5C_S37_R1_001.fastq.gz  5D_S38_R1_001.fastq.gz    --right 1A_S28_R2_001.fastq.gz  1B_S29_R2_001.fastq.gz  1C_S30_R2_001.fastq.gz  1E_S31_R2_001.fastq.gz  3A_S32_R2_001.fastq.gz  3C_S33_R2_001.fastq.gz  3D_S34_R2_001.fastq.gz  3E_S35_R2_001.fastq.gz  5B_S36_R2_001.fastq.gz  5C_S37_R2_001.fastq.gz  5D_S38_R2_001.fastq.gz --stranded RF --pacbio_isoseq clustered.hq.fasta.gz --jaccard_clip --memory 1000G -c 25 --species "Paramecium bursaria" --strain "186b" --cpus 56
+funannotate train -i genome_nomt_nobac_nosc598.fasta -o predictions --left 1A_S28_R1_001.fastq.gz1B_S29_R1_001.fastq.gz1C_S30_R1_001.fastq.gz1E_S31_R1_001.fastq.gz3A_S32_R1_001.fastq.gz3C_S33_R1_001.fastq.gz3D_S34_R1_001.fastq.gz3E_S35_R1_001.fastq.gz5B_S36_R1_001.fastq.gz5C_S37_R1_001.fastq.gz5D_S38_R1_001.fastq.gz--right 1A_S28_R2_001.fastq.gz1B_S29_R2_001.fastq.gz1C_S30_R2_001.fastq.gz1E_S31_R2_001.fastq.gz3A_S32_R2_001.fastq.gz3C_S33_R2_001.fastq.gz3D_S34_R2_001.fastq.gz3E_S35_R2_001.fastq.gz5B_S36_R2_001.fastq.gz5C_S37_R2_001.fastq.gz5D_S38_R2_001.fastq.gz --stranded RF --pacbio_isoseq clustered.hq.fasta.gz --jaccard_clip --memory 1200G -c 25 --species "Paramecium bursaria" --strain "186b" --cpus 98 --pasa_min_pct_aligned 60 --pasa_min_avg_per_id 60 --aligners minimap2 gmap blat
 
-funannotate predict -i genome_no_bac.fasta -o predictions -s "Paramecium bursaria" --strain "186b" --cpus 56 --busco_db alveolata_stramenophiles --transcript_evidence ~/guy/pb_isoseq/final/3_final_set/pb_isoseq_collapsed_isoforms_all.rep.fa --repeats2evm -d /databases/funannotate/1.8.13/ --SeqCenter "Exeter Sequencing Service" --name "XXXXXX" --organism other --keep_no_stops --busco_seed_species tetrahymena --optimize_augustus --gcode 6 -w snap:0 glimmerhmm:0 pasa:10 genemark:20 --header_length 30 --no-evm-partitions --p2g_pident 60 2>&1 | tee 4_predict.out
+funannotate predict -i genome_nomt_nobac_nosc598.fasta -o predictions -s "Paramecium bursaria" --strain "186b" --cpus 56 --busco_db alveolata_stramenophiles --transcript_evidence ~/guy/pb_isoseq/final/3_final_set/pb_isoseq_collapsed_isoforms_all.rep.fa --repeats2evm -d /databases/funannotate/1.8.13/ --SeqCenter "Exeter Sequencing Service" --name "pb186bvf" --organism other --keep_no_stops --busco_seed_species tetrahymena --optimize_augustus --gcode 6 -w snap:0 glimmerhmm:0 pasa:10 genemark:20 --header_length 30 --no-evm-partitions --p2g_pident 60 2>&1 | tee 4_predict.out
 
 funannotate update -i predictions --cpus 86 --sbt pb186b_submission_template.sbt
+
+funannotate iprscan -i predictions/ -m local -c 86 --iprscan_path /packages/interproscan/5.56-89.0 -o predictions_update_iprscan.xm
+
+funannotate annotate -i predictions --sbt pb186b_submission_template.sbt --iprscan predictions_update_iprscan.xml --busco_db alveolata_stramenophiles -d /databases/funannotate/1.8.13/ --header_length 30 --cpus 86
 ```
 
 ### Telomeres
