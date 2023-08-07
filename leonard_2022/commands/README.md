@@ -1,6 +1,4 @@
-# Analyses
-
-# Genome
+# Genome Assembly
 ## PacBio
 ### Preliminary
 BAM --> FASTQ
@@ -38,7 +36,7 @@ busco auto-lineage on all bins
 flye --threads 56 --meta --pacbio-raw bin-012reads.fastq.gz -o bin-012reads_assembly_raw
 ```
 
-#### Rough Clean & Mask
+### Rough Clean & Mask
 ```bash
 funannotate clean -i assembly.fasta -o assembly_cleaned.fasta --exhaustive --cpus 56
 funannotate sort -i assembly_cleaned.fasta -o assembly_cleaned_sorted.fasta
@@ -52,10 +50,18 @@ ln -s repeatmasker/assembly_cleaned_sorted.fasta.masked assembly_cleaned_sorted_
 ln -s assembly_cleaned_sorted_masked.fasta assembly.fasta
 ```
 
-### Pilon
-Two rounds of Pilon with Illumina Nova-Seq Libraries
+## Pilon
+Two rounds of Pilon with Illumina Nova-Seq Libraries (see below)
 
-### Funannotate
+## Illumina Novaseq
+### Adapter Trimming and QC
+```bash
+fastp -i 10024_Paramecium_r1.fq.gz -I 10024_Paramecium_r2.fq.gz -o 10024_Paramecium_r1_trimmed.fq.gz -O 10024_Paramecium_r2_trimmed.fq.gz --unpaired1 10024_Paramecium_unpaired_trimmed.fq.gz --unpaired2 10024_Paramecium_unpaired_trimmed.fq.gz --detect_adapter_for_pe --trim_poly_g -c -x -w 16
+```
+
+
+# Genome Annotation
+## Funannotate
 Had to modify the funnanotate scripts (train/library) to force PASA + Trinity/Trinotate scripts to enable -G Ciliate mode. Also edited the funannoate library to enable --gcode 6 for GeneMark-ES v4.71. Very hacky, would be nice to fix, add CLI option and add a pull request. Update - it's too messy I think. I had to edit a bunch of other scripts EVM and P2G and the main "translate" code (not using biopython) too! Too many options with different names: gcode 6, --stops ATG, -G Ciliate. Eugh. Also edited heavily the way augustus runs; added exact opal/ochre/amber stop codon usage and translation table 6 to params file. Weirdly, this increased gene preds from ~2k to ~12k... Might have broken optimise in the process, but final result is roughly expected.
 
 Also had to add this to the headers so that tbl2asn knows to translate stop codons properly at the end of 'predict'. Annoying this can't be passed as an option - wtf NCBI. This also messes up GeneMark. Sigh. More hacks, just modified the final genome fasta before tbl2asn is run. Now works fine.
@@ -76,7 +82,7 @@ funannotate iprscan -i predictions/ -m local -c 86 --iprscan_path /packages/inte
 funannotate annotate -i predictions --sbt pb186b_submission_template.sbt --iprscan predictions_update_iprscan.xml --busco_db alveolata_stramenophiles -d /databases/funannotate/1.8.13/ --header_length 30 --cpus 86
 ```
 
-### Telomeres
+## Telomeres
 ```bash
 telomeric_repeats.fasta
 >5_prime
@@ -111,7 +117,7 @@ telomeres_end=(scaffold_1046 scaffold_112 scaffold_113 scaffold_118 scaffold_126
 for i in "${telomeres_end[@]}"; do   echo "${i}";   sed -i "s/^>${i}$/>${i}_partial_chr_end/" assembly.fasta; done
 ```
 
-### Mitochondria
+## Mitochondria
 ```bash
 mitofinder -a assembly.fasta -p 56 -r p_caudatum_mitochondria.gb --new-genes --allow-intron --numt --intron-size 35 --max-contig-size 60000 -o 6 -j pb_mito
 
@@ -120,16 +126,19 @@ mitochondrial=(scaffold_350 scaffold_862 scaffold_698)
 for i in "${mitochondrial[@]}"; do   echo "${i}";   sed -i "s/^>${i}$/>${i}_putative_mito/" assembly.fasta; done
 ```
 
-## Illumina Novaseq
+# Genome Fixing
+During submission to NCBI (eugh) a number of contigs/scaffolds were found to have a "contaminant" of a repeated PacBio blunt end adapter "ATCTCTCTCTTTTCCTCCTCCTCCGTTGTTGTTGTTGAGAGAGAT" (weirdly labelled as NGB00972.1 - "O-methyltransferase [Staphylococcus aureus]" WTF, aaaanyway). This resulted in some contigs needing to be split (22, 25, 115 and 479 - relabelled as 'a' and 'b'), and four others (171, 686, 747, 1095) to be trimmed. Obviously this throws off all the downstream annotation as now contigs are different lengths and have different IDs. I had to manually edit the .agp file to reflect the split and trimmed contigs. Then with the help of [Liftoff](https://github.com/agshumate/Liftoff) we can reconstruct the GFF with new locations, and with [GAG](https://github.com/genomeannotation/GAG) (though it's buggy had to change all xrange to range in the python code and comment out the phase bits - in the future maybe [this](https://github.com/NBISweden/EMBLmyGFF3) si better?) we can regenerate the .tbl file and then the .sqn file (with tbl2asn) needed for submission.
 
-### Adapter Trimming and QC
 ```bash
-fastp -i 10024_Paramecium_r1.fq.gz -I 10024_Paramecium_r2.fq.gz -o 10024_Paramecium_r1_trimmed.fq.gz -O 10024_Paramecium_r2_trimmed.fq.gz --unpaired1 10024_Paramecium_unpaired_trimmed.fq.gz --unpaired2 10024_Paramecium_unpaired_trimmed.fq.gz --detect_adapter_for_pe --trim_poly_g -c -x -w 16
+liftoff Paramecium_bursaria_186b.scaffolds.fa Paramecium_bursaria_186b.scaffolds.fa_old -g Paramecium_bursaria_186b.gff3 -o Paramecium_bursaria_186b.new.gff3 -p 2
+
+python GAG/gag.py -f Paramecium_bursaria_186b.scaffolds.fa -g Paramecium_bursaria_186b.new.gff3
+
+table2asn -euk -augustus-fix -t ../../../pb186b_submission_template.sbt -i ../Paramecium_bursaria_186b.scaffolds.fa -M n -Z -f ./genome.tbl -j "[organism=Paramecium bursaria] [strain=186b] [gcode=6]" -U -T -l paired-ends -gaps-min 100 -c efwsx -C ESS -z cleanup.log -outdir .
 ```
 
-# Iso-Seq
-
-## isoseq3
+# Long Read Transcriptome
+## isoseq3 pipeline
 ```bash
 # identify and remove the 5'/3' cDNA primers
 lima --isoseq --peek-guess --dump-clips -j 112 ../m64176e_220706_095424.hifi_reads.bam ../primers.fasta hifi_reads.bam
@@ -172,7 +181,6 @@ awk '$3>90{print $0}' cds_vs_iso.out | cut -f1 | sort | uniq | wc -l
 ```
 
 ## BUSCO
-
 ### peptides
 ```bash
 busco -m prot -i ./pb_isoseq_collapsed_isoforms_all.rep.fa.transdecoder.renamed.pep --metaeuk_parameters="--translation-table=6" --metaeuk_rerun_parameters="--translation-table=6" -c 56 -o busco_prot_auto_isoseq --auto-lineage
