@@ -1,0 +1,25 @@
+All statistics are based on contigs of size >= 5000 bp, unless otherwise noted (e.g., "# contigs (>= 0 bp)" and "Total length (>= 0 bp)" include all contigs).
+
+Assembly                    pb186_full  pb186_genes_only  pb186_no_genes
+# contigs (>= 0 bp)         1158        1043              115           
+# contigs (>= 1000 bp)      1135        1034              101           
+# contigs (>= 5000 bp)      955         907               48            
+# contigs (>= 10000 bp)     807         784               23            
+# contigs (>= 25000 bp)     545         542               3             
+# contigs (>= 50000 bp)     301         301               0             
+Total length (>= 0 bp)      50271370    49534119          737251        
+Total length (>= 1000 bp)   50255172    49527451          727721        
+Total length (>= 5000 bp)   49735289    49147627          587662        
+Total length (>= 10000 bp)  48627412    48222601          404811        
+Total length (>= 25000 bp)  44300584    44218737          81847         
+Total length (>= 50000 bp)  35543902    35543902          0             
+# contigs                   955         907               48            
+Largest contig              395942      395942            28652         
+Total length                49735289    49147627          587662        
+GC (%)                      26.36       26.39             23.96         
+N50                         98051       99495             15136         
+N90                         23391       24992             6715          
+auN                         119451.2    120691.1          15757.4       
+L50                         150         147               14            
+L90                         565         543               39            
+# N's per 100 kbp           0.61        0.62              0.00          
