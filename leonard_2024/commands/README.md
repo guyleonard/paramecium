@@ -35,7 +35,6 @@ busco auto-lineage on all bins
 ```bash
 flye --threads 56 --meta --pacbio-raw bin-012reads.fastq.gz -o bin-012reads_assembly_raw
 ```
-
 ### Rough Clean & Mask
 ```bash
 funannotate clean -i assembly.fasta -o assembly_cleaned.fasta --exhaustive --cpus 56
@@ -49,6 +48,26 @@ ln -s repeatmasker/assembly_cleaned_sorted.fasta.masked assembly_cleaned_sorted_
 
 ln -s assembly_cleaned_sorted_masked.fasta assembly.fasta
 ```
+## CLR to CSS
+```
+for bam in Pb*.bam; do
+    base=$(basename "$bam" .bam)
+    
+    # Run CCS with --all to get both HiFi and non-HiFi reads
+    ccs $bam ${base}_all_reads.fastq --min-passes 3 --min-rq 0.99 --num-threads 56 --all
+
+    # Extract successful HiFi reads
+    seqkit grep -f <(grep "^@" ${base}_hifi_reads.fastq | cut -f1 -d" ") ${base}_all_reads.fastq > ${base}_hifi_only.fastq
+
+    # Extract failed CLR reads
+    seqkit grep -v -f <(grep "^@" ${base}_hifi_reads.fastq | cut -f1 -d" ") ${base}_all_reads.fastq > ${base}_failed_clr.fastq
+done
+
+cat *_hifi_only.fastq > all_hifi_reads.fastq
+
+cat *_failed_clr.fastq > all_failed_reads.fastq
+```
+
 
 ## Pilon
 Two rounds of Pilon with Illumina Nova-Seq Libraries (see below)
