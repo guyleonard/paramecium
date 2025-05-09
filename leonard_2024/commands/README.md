@@ -71,7 +71,14 @@ done
 cat *_hifi_reads.fastq.gz > all_hifi_reads.fastq.gz
 cat *_failed_clr.fastq.gz > all_failed_reads.fastq.gz
 ```
+## Two-Step Flye Assembly
+Roughly using the same idea as combining ONT + HiFi [here](https://github.com/mikolmogorov/Flye/blob/flye/docs/FAQ.md#can-i-use-both-pacbio-and-ont-reads-for-assembly)
 
+```
+flye --pacbio-raw hifi_reads.fastq.gz all_clr_reads.fastq.gz --iterations 0 -o flye_hifi_clr_bin012_output --threads 56 --genome-size 32m
+
+flye --pacbio-raw hifi_reads.fastq.gz --resume-from polishing -o flye_hifi_clr_bin012_output --threads 56 --genome-size 32m
+```
 
 ## Pilon
 Two rounds of Pilon with Illumina Nova-Seq Libraries (see below)
