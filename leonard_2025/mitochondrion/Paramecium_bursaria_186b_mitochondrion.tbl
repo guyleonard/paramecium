@@ -1,0 +1,275 @@
+>Feature ptg000001l
+246	637	CDS
+			product	ribosomal protein L6
+			transl_table	4
+			note	inverted repeat copy A
+246	637	gene
+			gene	rpl6
+			gene_synonym	ymf60
+			note	inverted repeat copy A
+1016	657	CDS
+			product	hypothetical protein
+			transl_table	4
+			note	inverted repeat copy A
+1016	657	gene
+			gene	ymf64
+			note	inverted repeat copy A
+3130	2903	CDS
+			product	ATP synthase subunit 9
+			transl_table	4
+			note	inverted repeat copy A
+3130	2903	gene
+			gene	atp9
+			note	inverted repeat copy A
+3211	3141	gene
+			gene	trnF-GAA
+			note	inverted repeat copy A
+3211	3141	tRNA
+			gene	trnF-GAA
+			product	tRNA-Phe
+			note	inverted repeat copy A
+3205	3149	gene
+			gene	trnH-GUG
+			note	inverted repeat copy A
+3205	3149	tRNA
+			gene	trnH-GUG
+			product	tRNA-His
+			note	inverted repeat copy A
+3452	3231	CDS
+			product	NADH dehydrogenase subunit 1
+			transl_table	4
+			note	inverted repeat copy A
+3452	3231	gene
+			gene	nad1
+			note	inverted repeat copy A
+5854	5378	CDS
+			product	ribosomal protein L16
+			transl_table	4
+			note	inverted repeat copy A
+5854	5378	gene
+			gene	rpl16
+			note	inverted repeat copy A
+6830	6105	CDS
+			product	hypothetical protein
+			transl_table	4
+			note	inverted repeat copy A
+6830	6105	gene
+			gene	ymf65
+			note	inverted repeat copy A
+8719	8287	CDS
+			product	hypothetical protein
+			transl_table	4
+			note	inverted repeat copy A
+8719	8287	gene
+			gene	yejR
+			note	inverted repeat copy A
+10367	10005	CDS
+			product	NADH dehydrogenase subunit 3
+			transl_table	4
+			note	inverted repeat copy A
+10367	10005	gene
+			gene	nad3
+			note	inverted repeat copy A
+11142	10387	CDS
+			product	NADH dehydrogenase subunit 9
+			transl_table	4
+			note	inverted repeat copy A
+11142	10387	gene
+			gene	nad9
+			note	inverted repeat copy A
+12137	12718	CDS
+			product	NADH dehydrogenase subunit 9
+			transl_table	4
+			note	inverted repeat copy B
+12137	12718	gene
+			gene	nad9
+			note	inverted repeat copy B
+12738	13100	CDS
+			product	NADH dehydrogenase subunit 3
+			transl_table	4
+			note	inverted repeat copy B
+12738	13100	gene
+			gene	nad3
+			note	inverted repeat copy B
+14386	14886	CDS
+			product	hypothetical protein
+			transl_table	4
+			note	inverted repeat copy B
+14386	14886	gene
+			gene	yejR
+			note	inverted repeat copy B
+16275	16830	CDS
+			product	hypothetical protein
+			transl_table	4
+			note	inverted repeat copy B
+16275	16830	gene
+			gene	ymf65
+			note	inverted repeat copy B
+17395	17727	CDS
+			product	ribosomal protein L16
+			transl_table	4
+			note	inverted repeat copy B
+17395	17727	gene
+			gene	rpl16
+			note	inverted repeat copy B
+19653	19874	CDS
+			product	NADH dehydrogenase subunit 1
+			transl_table	4
+			note	inverted repeat copy B
+19653	19874	gene
+			gene	nad1
+			note	inverted repeat copy B
+19895	19965	gene
+			gene	trnF-GAA
+			note	inverted repeat copy B
+19895	19965	tRNA
+			gene	trnF-GAA
+			product	tRNA-Phe
+			note	inverted repeat copy B
+19901	19957	gene
+			gene	trnH-GUG
+			note	inverted repeat copy B
+19901	19957	tRNA
+			gene	trnH-GUG
+			product	tRNA-His
+			note	inverted repeat copy B
+19975	20202	CDS
+			product	ATP synthase subunit 9
+			transl_table	4
+			note	inverted repeat copy B
+19975	20202	gene
+			gene	atp9
+			note	inverted repeat copy B
+22089	22422	CDS
+			product	hypothetical protein
+			transl_table	4
+			note	inverted repeat copy B
+22089	22422	gene
+			gene	ymf64
+			note	inverted repeat copy B
+22859	22468	CDS
+			product	ribosomal protein L6
+			transl_table	4
+			note	inverted repeat copy B
+22859	22468	gene
+			gene	rpl6
+			gene_synonym	ymf60
+			note	inverted repeat copy B
+23495	23199	CDS
+			product	ribosomal protein S14
+			transl_table	4
+23495	23199	gene
+			gene	rps14
+24765	23500	CDS
+			product	NADH dehydrogenase subunit 7
+			transl_table	4
+24765	23500	gene
+			gene	nad7
+24216	24275	gene
+			gene	tRNA-Asp
+24216	24275	tRNA
+			gene	tRNA-Asp
+			product	tRNA-Asp
+25388	25804	CDS
+			product	ribosomal protein S12
+			transl_table	4
+25388	25804	gene
+			gene	rps12
+25912	26298	CDS
+			product	hypothetical protein
+			transl_table	4
+25912	26298	gene
+			gene	nad10
+26760	27536	CDS
+			product	ribosomal protein L2
+			transl_table	4
+26760	27536	gene
+			gene	rpl2
+27574	27816	CDS
+			product	ribosomal protein S19
+			transl_table	4
+27574	27816	gene
+			gene	rps19
+27916	28258	CDS
+			product	ribosomal protein S3
+			transl_table	4
+27916	28258	gene
+			gene	rps3
+28332	29057	CDS
+			product	ribosomal protein S13
+			transl_table	4
+28332	29057	gene
+			gene	rps13
+33579	34862	CDS
+			product	cytochrome b
+			transl_table	4
+33579	34862	gene
+			gene	cob
+34952	35022	gene
+			gene	tRNA-Trp
+34952	35022	tRNA
+			gene	tRNA-Trp
+			product	tRNA-Trp
+36227	37546	CDS
+			product	NADH dehydrogenase subunit 5
+			transl_table	4
+36227	37546	gene
+			gene	nad5
+37630	40314	CDS
+			product	cytochrome c oxidase subunit II
+			transl_table	4
+37630	40314	gene
+			gene	cox2
+40746	41913	gene
+			gene	rrnS
+40746	41913	rRNA
+			product	small subunit ribosomal RNA
+43853	44791	CDS
+			product	hypothetical protein
+			transl_table	4
+43853	44791	gene
+			gene	ymf68
+45201	47105	CDS
+			product	cytochrome c oxidase subunit I
+			transl_table	4
+45201	47105	gene
+			gene	cox1
+47116	47985	CDS
+			product	NADH dehydrogenase subunit 1
+			transl_table	4
+47116	47985	gene
+			gene	nad1
+49239	50522	CDS
+			product	NADH dehydrogenase subunit 4
+			transl_table	4
+49239	50522	gene
+			gene	nad4
+50558	50733	CDS
+			product	hypothetical protein
+			transl_table	4
+50558	50733	gene
+			gene	ymf57
+51099	52125	CDS
+			product	hypothetical protein
+			transl_table	4
+51099	52125	gene
+			gene	ymf66
+52464	52529	gene
+			gene	tRNA-Met
+52464	52529	tRNA
+			gene	tRNA-Met
+			product	tRNA-Met
+52564	54515	gene
+			gene	rrnL
+52564	54515	rRNA
+			product	large subunit ribosomal RNA
+54823	54898	gene
+			gene	trnY-GUA
+54823	54898	tRNA
+			gene	trnY-GUA
+			product	tRNA-Tyr
+55550	55909	CDS
+			product	ribosomal protein L14
+			transl_table	4
+55550	55909	gene
+			gene	rpl14

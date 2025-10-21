@@ -1,0 +1,93 @@
+##gff-version 3
+ptg000001l	.	CDS	246	637	.	+	0	ID=CDS_rpl6_A;Parent=gene_rpl6_A;gene=rpl6;product=ribosomal protein L6;Note=inverted repeat copy A;transl_table=4
+ptg000001l	.	gene	246	637	.	+	.	ID=gene_rpl6_A;Name=rpl6;gene=rpl6;gene_synonym=ymf60;Note=inverted repeat copy A
+ptg000001l	.	CDS	657	1016	.	-	0	ID=CDS_ymf64_A;Parent=gene_ymf64_A;gene=ymf64;Note=inverted repeat copy A;transl_table=4
+ptg000001l	.	gene	657	1016	.	-	.	ID=gene_ymf64_A;Name=ymf64;gene=ymf64;Note=inverted repeat copy A
+ptg000001l	.	CDS	2903	3130	.	-	0	ID=CDS_atp9_A;Parent=gene_atp9_A;gene=atp9;product=ATP synthase subunit 9;Note=inverted repeat copy A;transl_table=4
+ptg000001l	.	gene	2903	3130	.	-	.	ID=gene_atp9_A;Name=atp9;gene=atp9;Note=inverted repeat copy A
+ptg000001l	.	gene	3141	3211	.	-	.	ID=gene_trnF_GAA_A;Name=trnF-GAA;gene=trnF-GAA;Note=inverted repeat copy A;description=trnF
+ptg000001l	.	tRNA	3141	3211	.	-	.	ID=tRNA_trnF_GAA_A;Parent=gene_trnF_GAA_A;Name=trnF-GAA;product=tRNA-Phe;gene=trnF;Note=inverted repeat copy A
+ptg000001l	.	gene	3149	3205	.	-	.	ID=gene_trnH_GUG_A;Name=trnH-GUG;gene=trnH-GUG;Note=inverted repeat copy A
+ptg000001l	.	tRNA	3149	3205	.	-	.	ID=tRNA_trnH_GUG_A;Parent=gene_trnH_GUG_A;Name=trnH-GUG;product=tRNA-His;gene=trnH;Note=inverted repeat copy A
+ptg000001l	.	CDS	3231	3452	.	-	0	ID=CDS_nad1_A;Parent=gene_nad1_A;gene=nad1;product=NADH dehydrogenase subunit 1;Note=inverted repeat copy A;transl_table=4
+ptg000001l	.	gene	3231	3452	.	-	.	ID=gene_nad1_A;Name=nad1;gene=nad1;Note=inverted repeat copy A
+ptg000001l	.	CDS	5378	5854	.	-	0	ID=CDS_rpl16_A;Parent=gene_rpl16_A;gene=rpl16;product=ribosomal protein L16;Note=inverted repeat copy A;transl_table=4
+ptg000001l	.	gene	5378	5854	.	-	.	ID=gene_rpl16_A;Name=rpl16;gene=rpl16;Note=inverted repeat copy A
+ptg000001l	.	CDS	6105	6830	.	-	0	ID=CDS_ymf65_A;Parent=gene_ymf65_A;gene=ymf65;Note=inverted repeat copy A;transl_table=4
+ptg000001l	.	gene	6105	6830	.	-	.	ID=gene_ymf65_A;Name=ymf65;gene=ymf65;Note=inverted repeat copy A
+ptg000001l	.	CDS	8287	8719	.	-	0	ID=CDS_yejR_A;Parent=gene_yejR_A;gene=yejR;Note=inverted repeat copy A;transl_table=4
+ptg000001l	.	gene	8287	8719	.	-	.	ID=gene_yejR_A;Name=yejR;gene=yejR;Note=inverted repeat copy A
+ptg000001l	.	CDS	10005	10367	.	-	0	ID=CDS_nad3_A;Parent=gene_nad3_A;gene=nad3;product=NADH dehydrogenase subunit 3;Note=inverted repeat copy A;transl_table=4
+ptg000001l	.	gene	10005	10367	.	-	.	ID=gene_nad3_A;Name=nad3;gene=nad3;Note=inverted repeat copy A
+ptg000001l	.	CDS	10387	11142	.	-	0	ID=CDS_nad9_A;Parent=gene_nad9_A;gene=nad9;product=NADH dehydrogenase subunit 9;Note=inverted repeat copy A;transl_table=4
+ptg000001l	.	gene	10387	11142	.	-	.	ID=gene_nad9_A;Name=nad9;gene=nad9;Note=inverted repeat copy A
+ptg000001l	.	CDS	12137	12718	.	+	0	ID=CDS_nad9_B;Parent=gene_nad9_B;gene=nad9;product=NADH dehydrogenase subunit 9;Note=inverted repeat copy B;transl_table=4
+ptg000001l	.	gene	12137	12718	.	+	.	ID=gene_nad9_B;Name=nad9;gene=nad9;Note=inverted repeat copy B
+ptg000001l	.	CDS	12738	13100	.	+	0	ID=CDS_nad3_B;Parent=gene_nad3_B;gene=nad3;product=NADH dehydrogenase subunit 3;Note=inverted repeat copy B;transl_table=4
+ptg000001l	.	gene	12738	13100	.	+	.	ID=gene_nad3_B;Name=nad3;gene=nad3;Note=inverted repeat copy B
+ptg000001l	.	CDS	14386	14886	.	+	0	ID=CDS_yejR_B;Parent=gene_yejR_B;gene=yejR;Note=inverted repeat copy B;transl_table=4
+ptg000001l	.	gene	14386	14886	.	+	.	ID=gene_yejR_B;Name=yejR;gene=yejR;Note=inverted repeat copy B
+ptg000001l	.	CDS	16275	16830	.	+	0	ID=CDS_ymf65_B;Parent=gene_ymf65_B;gene=ymf65;Note=inverted repeat copy B;transl_table=4
+ptg000001l	.	gene	16275	16830	.	+	.	ID=gene_ymf65_B;Name=ymf65;gene=ymf65;Note=inverted repeat copy B
+ptg000001l	.	CDS	17395	17727	.	+	0	ID=CDS_rpl16_B;Parent=gene_rpl16_B;gene=rpl16;product=ribosomal protein L16;Note=inverted repeat copy B;transl_table=4
+ptg000001l	.	gene	17395	17727	.	+	.	ID=gene_rpl16_B;Name=rpl16;gene=rpl16;Note=inverted repeat copy B
+ptg000001l	.	CDS	19653	19874	.	+	0	ID=CDS_nad1_B;Parent=gene_nad1_B;gene=nad1;product=NADH dehydrogenase subunit 1;Note=inverted repeat copy B;transl_table=4
+ptg000001l	.	gene	19653	19874	.	+	.	ID=gene_nad1_B;Name=nad1;gene=nad1;Note=inverted repeat copy B
+ptg000001l	.	gene	19895	19965	.	+	.	ID=gene_trnF_GAA_B;Name=trnF-GAA;gene=trnF-GAA;Note=inverted repeat copy B
+ptg000001l	.	tRNA	19895	19965	.	+	.	ID=tRNA_trnF_GAA_B;Parent=gene_trnF_GAA_B;Name=trnF-GAA;product=tRNA-Phe;gene=trnF;Note=inverted repeat copy B
+ptg000001l	.	gene	19901	19957	.	+	.	ID=gene_trnH_GUG_B;Name=trnH-GUG;gene=trnH-GUG;Note=inverted repeat copy B
+ptg000001l	.	tRNA	19901	19957	.	+	.	ID=tRNA_trnH_GUG_B;Parent=gene_trnH_GUG_B;Name=trnH-GUG;product=tRNA-His;gene=trnH;Note=inverted repeat copy B
+ptg000001l	.	CDS	19975	20202	.	+	0	ID=CDS_atp9_B;Parent=gene_atp9_B;gene=atp9;product=ATP synthase subunit 9;Note=inverted repeat copy B;transl_table=4
+ptg000001l	.	gene	19975	20202	.	+	.	ID=gene_atp9_B;Name=atp9;gene=atp9;Note=inverted repeat copy B
+ptg000001l	.	CDS	22089	22422	.	+	0	ID=CDS_ymf64_B;Parent=gene_ymf64_B;gene=ymf64;Note=inverted repeat copy B;transl_table=4
+ptg000001l	.	gene	22089	22422	.	+	.	ID=gene_ymf64_B;Name=ymf64;gene=ymf64;Note=inverted repeat copy B
+ptg000001l	.	CDS	22468	22859	.	-	0	ID=CDS_rpl6_B;Parent=gene_rpl6_B;gene=rpl6;product=ribosomal protein L6;Note=inverted repeat copy B;transl_table=4
+ptg000001l	.	gene	22468	22859	.	-	.	ID=gene_rpl6_B;Name=rpl6;gene=rpl6;gene_synonym=ymf60;Note=inverted repeat copy B
+ptg000001l	.	CDS	23199	23495	.	-	0	ID=CDS_rps14;Parent=gene_rps14;gene=rps14;product=ribosomal protein S14;transl_table=4
+ptg000001l	.	gene	23199	23495	.	-	.	ID=gene_rps14;Name=rps14;gene=rps14
+ptg000001l	.	CDS	23500	24765	.	-	0	ID=CDS_nad7;Parent=gene_nad7;gene=nad7;product=NADH dehydrogenase subunit 7;transl_table=4
+ptg000001l	.	gene	23500	24765	.	-	.	ID=gene_nad7;Name=nad7;gene=nad7
+ptg000001l	.	gene	24216	24275	.	+	.	ID=gene_tRNA_Asp;Name=tRNA-Asp;gene=tRNA-Asp
+ptg000001l	.	tRNA	24216	24275	.	+	.	ID=tRNA_tRNA_Asp;Parent=gene_tRNA_Asp;Name=tRNA-Asp;product=tRNA-Asp
+ptg000001l	.	CDS	25388	25804	.	+	0	ID=CDS_rps12;Parent=gene_rps12;gene=rps12;product=ribosomal protein S12;transl_table=4
+ptg000001l	.	gene	25388	25804	.	+	.	ID=gene_rps12;Name=rps12;gene=rps12
+ptg000001l	.	CDS	25912	26298	.	+	0	ID=CDS_nad10;Parent=gene_nad10;gene=nad10;transl_table=4
+ptg000001l	.	gene	25912	26298	.	+	.	ID=gene_nad10;Name=nad10;gene=nad10
+ptg000001l	.	CDS	26760	27536	.	+	0	ID=CDS_rpl2;Parent=gene_rpl2;gene=rpl2;product=ribosomal protein L2;transl_table=4
+ptg000001l	.	gene	26760	27536	.	+	.	ID=gene_rpl2;Name=rpl2;gene=rpl2
+ptg000001l	.	CDS	27574	27816	.	+	0	ID=CDS_rps19;Parent=gene_rps19;gene=rps19;product=ribosomal protein S19;transl_table=4
+ptg000001l	.	gene	27574	27816	.	+	.	ID=gene_rps19;Name=rps19;gene=rps19
+ptg000001l	.	CDS	27916	28258	.	+	0	ID=CDS_rps3;Parent=gene_rps3;gene=rps3;product=ribosomal protein S3;transl_table=4
+ptg000001l	.	gene	27916	28258	.	+	.	ID=gene_rps3;Name=rps3;gene=rps3
+ptg000001l	.	CDS	28332	29057	.	+	0	ID=CDS_rps13;Parent=gene_rps13;gene=rps13;product=ribosomal protein S13;transl_table=4
+ptg000001l	.	gene	28332	29057	.	+	.	ID=gene_rps13;Name=rps13;gene=rps13
+ptg000001l	.	CDS	33579	34862	.	+	0	ID=CDS_cob;Parent=gene_cob;gene=cob;transl_table=4
+ptg000001l	.	gene	33579	34862	.	+	.	ID=gene_cob;Name=cob;gene=cob
+ptg000001l	.	gene	34952	35022	.	+	.	ID=gene_tRNA_Trp;Name=tRNA-Trp;gene=tRNA-Trp
+ptg000001l	.	tRNA	34952	35022	.	+	.	ID=tRNA_tRNA_Trp;Parent=gene_tRNA_Trp;Name=tRNA-Trp;product=tRNA-Trp
+ptg000001l	.	CDS	36227	37546	.	+	0	ID=CDS_nad5;Parent=gene_nad5;gene=nad5;product=NADH dehydrogenase subunit 5;transl_table=4
+ptg000001l	.	gene	36227	37546	.	+	.	ID=gene_nad5;Name=nad5;gene=nad5
+ptg000001l	.	CDS	37630	40314	.	+	0	ID=CDS_cox2;Parent=gene_cox2;gene=cox2;product=cytochrome c oxidase subunit II;transl_table=4
+ptg000001l	.	gene	37630	40314	.	+	.	ID=gene_cox2;Name=cox2;gene=cox2
+ptg000001l	.	gene	40746	41913	.	+	.	ID=gene_rrnS;Name=rrnS;gene=rrnS
+ptg000001l	.	rRNA	40746	41913	.	+	.	ID=rRNA_rrnS;Parent=gene_rrnS;gene=rrnS;product=small subunit ribosomal RNA
+ptg000001l	.	CDS	43853	44791	.	+	0	ID=CDS_ymf68;Parent=gene_ymf68;gene=ymf68;transl_table=4
+ptg000001l	.	gene	43853	44791	.	+	.	ID=gene_ymf68;Name=ymf68;gene=ymf68
+ptg000001l	.	CDS	45201	47105	.	+	0	ID=CDS_cox1;Parent=gene_cox1;gene=cox1;product=cytochrome c oxidase subunit I;transl_table=4
+ptg000001l	.	gene	45201	47105	.	+	.	ID=gene_cox1;Name=cox1;gene=cox1
+ptg000001l	.	CDS	47116	47985	.	+	0	ID=CDS_nad1;Parent=gene_nad1;gene=nad1;product=NADH dehydrogenase subunit 1;transl_table=4
+ptg000001l	.	gene	47116	47985	.	+	.	ID=gene_nad1;Name=nad1;gene=nad1
+ptg000001l	.	CDS	49239	50522	.	+	0	ID=CDS_nad4;Parent=gene_nad4;gene=nad4;product=NADH dehydrogenase subunit 4;transl_table=4
+ptg000001l	.	gene	49239	50522	.	+	.	ID=gene_nad4;Name=nad4;gene=nad4
+ptg000001l	.	CDS	50558	50733	.	+	0	ID=CDS_ymf57;Parent=gene_ymf57;gene=ymf57;transl_table=4
+ptg000001l	.	gene	50558	50733	.	+	.	ID=gene_ymf57;Name=ymf57;gene=ymf57
+ptg000001l	.	CDS	51099	52125	.	+	0	ID=CDS_ymf66;Parent=gene_ymf66;gene=ymf66;transl_table=4
+ptg000001l	.	gene	51099	52125	.	+	.	ID=gene_ymf66;Name=ymf66;gene=ymf66
+ptg000001l	.	gene	52464	52529	.	+	.	ID=gene_tRNA_Met;Name=tRNA-Met;gene=tRNA-Met
+ptg000001l	.	tRNA	52464	52529	.	+	.	ID=tRNA_tRNA_Met;Parent=gene_tRNA_Met;Name=tRNA-Met;product=tRNA-Met
+ptg000001l	.	gene	52564	54515	.	+	.	ID=gene_rrnL;Name=rrnL;gene=rrnL
+ptg000001l	.	rRNA	52564	54515	.	+	.	ID=rRNA_rrnL;Parent=gene_rrnL;gene=rrnL;product=large subunit ribosomal RNA
+ptg000001l	.	gene	54823	54898	.	+	.	ID=gene_trnY_GUA;Name=trnY-GUA;gene=trnY-GUA
+ptg000001l	.	tRNA	54823	54898	.	+	.	ID=tRNA_trnY_GUA;Parent=gene_trnY_GUA;Name=trnY-GUA;product=tRNA-Tyr;gene=trnY
+ptg000001l	.	CDS	55550	55909	.	+	0	ID=CDS_rpl14;Parent=gene_rpl14;gene=rpl14;product=ribosomal protein L14;transl_table=4
+ptg000001l	.	gene	55550	55909	.	+	.	ID=gene_rpl14;Name=rpl14;gene=rpl14
