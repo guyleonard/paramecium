@@ -35,7 +35,6 @@ busco auto-lineage on all bins
 ```bash
 flye --threads 56 --meta --pacbio-raw bin-012reads.fastq.gz -o bin-012reads_assembly_raw
 ```
-
 ### Rough Clean & Mask
 ```bash
 funannotate clean -i assembly.fasta -o assembly_cleaned.fasta --exhaustive --cpus 56
@@ -48,6 +47,37 @@ mv assembly_cleaned_sorted.fasta.* repeatmasker/
 ln -s repeatmasker/assembly_cleaned_sorted.fasta.masked assembly_cleaned_sorted_masked.fasta
 
 ln -s assembly_cleaned_sorted_masked.fasta assembly.fasta
+```
+## CLR to CSS
+```
+for bam in Pb*.bam; do
+    base=$(basename "$bam" .bam)
+
+    # Run CCS with --all to get both HiFi and non-HiFi reads
+    ccs $bam ${base}_all_reads.fastq.gz --min-passes 3 --min-rq 0.99 --num-threads 56 --all
+done
+
+for file in *_hifi_reads.fastq.gz; do
+    zcat "$file" | awk 'NR%4==1' | sed 's/^@//' > ${file%.fastq.gz}_hifi_ids.txt
+done
+
+for file in *_all_reads.fastq.gz; do
+    base=${file%_all_reads.fastq.gz}
+    
+    # Extract failed reads by removing known HiFi reads
+    seqkit grep -v -f ${base}_hifi_ids.txt "$file" -o ${base}_failed_clr.fastq.gz
+done
+
+cat *_hifi_reads.fastq.gz > all_hifi_reads.fastq.gz
+cat *_failed_clr.fastq.gz > all_failed_reads.fastq.gz
+```
+## Two-Step Flye Assembly
+Roughly using the same idea as combining ONT + HiFi [here](https://github.com/mikolmogorov/Flye/blob/flye/docs/FAQ.md#can-i-use-both-pacbio-and-ont-reads-for-assembly)
+
+```
+flye --pacbio-raw hifi_reads.fastq.gz all_clr_reads.fastq.gz --iterations 0 -o flye_hifi_clr_bin012_output --threads 56 --genome-size 32m
+
+flye --pacbio-raw hifi_reads.fastq.gz --resume-from polishing -o flye_hifi_clr_bin012_output --threads 56 --genome-size 32m
 ```
 
 ## Pilon
